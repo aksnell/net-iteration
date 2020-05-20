@@ -9,7 +9,7 @@ namespace DotnetIteration
     public static class Iteration
     {
         /*
-           Welcome to Interation
+           Welcome to Iteration
            Down below you will find instructions for code to write.
            As you write and save your code, you can look in your terminal where you
            ran `dotnet watch test` to see if your code is working. The tests continuously check
@@ -26,7 +26,7 @@ namespace DotnetIteration
         //
         public static IEnumerable<string> Yelling(List<string> words)
         {
-            throw new System.NotImplementedException();
+            return words.Select(word => word.ToUpper());
         }
 
 
@@ -37,7 +37,7 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> Double(List<int> numbers)
         {
-            throw new System.NotImplementedException();
+            return numbers.Select(number => number * 2);
         }
 
 
@@ -49,7 +49,7 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> StringyIndexes(List<string> data)
         {
-            throw new System.NotImplementedException();
+            return data.Select((str, index) => str + $" is at index {index}");
         }
 
 
@@ -59,7 +59,7 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            return data.Where(number => number % 2 == 0);
         }
 
 
@@ -70,7 +70,7 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            return data.Where((number, index) => index % 2 == 0);
         }
 
 
@@ -89,7 +89,7 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> BestMovieOfTheYear(List<Movie> data, int year)
         {
-            throw new System.NotImplementedException();
+            return data.Where(movie => movie.Year == year && movie.Score > 90).Select(movie => movie.Name);
         }
 
 
@@ -99,7 +99,7 @@ namespace DotnetIteration
         // 
         public static bool EveryoneIsOdd(List<int> data)
         {
-            throw new System.NotImplementedException();
+            return data.All(number => number % 2 != 0);
         }
 
 
@@ -110,7 +110,9 @@ namespace DotnetIteration
         // 
         public static string FindTheNeedle(List<string> data)
         {
-            throw new System.NotImplementedException();
+            // return data.First(str => str.Contains("needle"));
+            // whichever you prefer
+            return data.FirstOrDefault(str => str.Contains("needle"));
         }
 
 
@@ -121,8 +123,11 @@ namespace DotnetIteration
         // 
         public static int FindTheNeedleIndex(List<string> data)
         {
-            throw new System.NotImplementedException();
+            // return data.FindIndex(str => str.Contains("needle"));
+            // Was just experimenting, my official answer is the commented one.
+            return data.Select((str, index) => new { str = str, index = index}).First(selected => selected.str.Contains("needle")).index;
         }
+
 
 
         // 
@@ -132,7 +137,7 @@ namespace DotnetIteration
         // 
         public static bool SomeoneToLove(List<string> data)
         {
-            throw new System.NotImplementedException();
+            return data.Any(str => str.Length == 4);
         }
     }
 }
